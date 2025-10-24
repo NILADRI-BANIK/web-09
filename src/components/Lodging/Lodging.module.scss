@@ -1,0 +1,24 @@
+.LodgingWrapper {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.Loading {
+		width: 10rem;
+		height: 10rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+        font-size: 5rem;
+        font-weight: 600;
+        color: #fff;
+	}
+}

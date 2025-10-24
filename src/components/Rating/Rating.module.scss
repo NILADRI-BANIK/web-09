@@ -1,0 +1,88 @@
+.RatingWrapper {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.4);
+
+	.RatingContainer {
+		width: 356px;
+		height: 310px;
+		border-radius: 18.904px;
+		background: #2d2c2c;
+		position: relative;
+		box-shadow: 5px 8px 18px 5px rgba(0, 0, 0, 0.3);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.CrossBtn {
+			position: absolute;
+			top: 31px;
+			right: 37px;
+			cursor: pointer;
+			background: transparent;
+			width: 25px;
+			height: 25px;
+			border: none;
+		}
+
+		.LogoWrapper {
+			margin-top: 32px;
+			width: 132.83px;
+			height: 132.83px;
+			border-radius: 50%;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 50%;
+				border: 5px solid transparent;
+				background: linear-gradient(rgba(90, 86, 250, 1), rgba(167, 22, 255, 1)) border-box;
+				-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+				-webkit-mask-composite: destination-out;
+				mask-composite: exclude;
+			}
+		}
+
+		h3 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+			color: #fff;
+			font-family: "Poppins";
+			font-size: 12.458px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 99.5%; /* 12.396px */
+		}
+
+        .StarContainer{
+            width: 205px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9.34px;
+
+            svg{
+                width: 35px;
+                height: 35px;
+                cursor: pointer;
+            }
+        }
+	}
+}

@@ -1,0 +1,71 @@
+#carouselB9 {
+	.alice-carousel__wrapper {
+		// height: 70vh;
+		width: 87%;
+		overflow: visible;
+
+		.alice-carousel__stage-item {
+			transition: all ease 0.3s;
+			height: 34.27394rem !important;
+			#details {
+				display: none;
+			}
+		}
+		.__target {
+			width: 40vw !important;
+			#details {
+				display: flex;
+			}
+		}
+	}
+
+	.alice-carousel__prev-btn {
+		display: none;
+	}
+
+	.alice-carousel__next-btn {
+		display: none;
+	}
+
+	.alice-carousel__dots {
+		display: none;
+	}
+}
+
+.mySwiper {
+	width: 100%;
+	height: 75%;
+	// border: 2px solid lime;
+}
+
+.swiper-button-prev{
+
+
+	&::after{
+		color: #fff;
+		font-size: 2rem;
+	}
+}
+.swiper-button-next{
+
+	&::after{
+		color: #fff;
+		font-size: 2rem;
+	}
+}
+
+// swiper swiper-initialized swiper-horizontal swiper-free-mode mySwiper swiper-backface-hidden
+
+// .swiper {
+// 	// border: 3px solid yellow;
+// }
+
+// .swiper-slide {
+// 	// width: 20.68806rem !important;
+// 	// height: 31.39888rem !important;
+// }
+
+// .swiper-slide-active {
+// 	// width: 25.67856rem !important;
+// 	// height: 38.97313rem !important;
+// }

@@ -1,0 +1,515 @@
+.Maximize {
+	position: fixed;
+	top: -20%;
+	right: -20%;
+	z-index: 100;
+	width: 10rem;
+	height: 3rem;
+	border-radius: 10px;
+	border: 1px solid #46f2db;
+	background: linear-gradient(134deg, rgba(30, 30, 30, 0.58) 7.59%, rgba(51, 51, 51, 0.58) 97.1%);
+	backdrop-filter: blur(2px);
+	font-size: 1.2rem;
+	color: #3ff0d9;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+
+	&.MaximizeActive {
+		top: 2%;
+		right: 2%;
+	}
+}
+
+.EditingWrapper {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease-in-out;
+
+	&.Minimize {
+		opacity: 0;
+		transform: translate(150%, -150%);
+	}
+
+	.BtnWrapper {
+		position: absolute;
+		top: 2rem;
+		right: 1%;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		
+		@media screen and (max-width: 900px) {
+			top: 3.5rem;
+			flex-wrap: wrap;
+			padding: 2rem;
+		}
+
+		button {
+			min-width: 9rem;
+			min-height: 3rem;
+			border-radius: 10px;
+			border: 1px solid #46f2db;
+			background: linear-gradient(134deg, rgba(30, 30, 30, 0.58) 7.59%, rgba(51, 51, 51, 0.58) 97.1%);
+			backdrop-filter: blur(2px);
+			color: #3ff0d9;
+			padding: 0.5rem 1rem;
+			border-radius: 0.7rem;
+			cursor: pointer;
+			transition: all 0.3s ease-in;
+
+			&:hover {
+				color: #ffffff;
+				border: 1px solid #279485;
+				background: #279485;
+			}
+		}
+	}
+
+	.EditingMain {
+		width: 50rem;
+		height: 45em;
+		z-index: 1;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		resize: both;
+		border-radius: 0.625rem;
+		overflow: hidden;
+		background: #000;
+
+		.OverlayForDrag {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			z-index: 2;
+			cursor: grab;
+
+			&:active {
+				cursor: grabbing !important;
+			}
+		}
+
+		& > * {
+			user-select: none;
+		}
+
+		.EditingContainer {
+			flex: 1;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			overflow: hidden;
+
+			.img {
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain;
+				margin: 0 auto;
+				user-select: none;
+				transition: all 0.3s ease-in-out;
+			}
+
+			.EffectPreview {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+
+		.ButtonContainer {
+			width: 100%;
+			height: 8rem;
+			border-radius: 0.625rem;
+			border: 1.5px solid #05beb3;
+			background: #5a5a5a;
+			// box-shadow: -8.2566px -8.2566px 8.2566px 0px rgba(0, 0, 0, 0.25);
+			overflow: hidden;
+
+			button {
+				width: 7rem;
+				height: 5rem;
+				border-radius: 10px;
+				border: 1px solid #46f2db;
+				background: linear-gradient(134deg, rgba(30, 30, 30, 0.58) 7.59%, rgba(51, 51, 51, 0.58) 97.1%);
+				backdrop-filter: blur(2px);
+				font-size: 1.2rem;
+				color: #3ff0d9;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				gap: 0.5rem;
+				transition: all 0.3s ease-in-out;
+				font-family: Poppins;
+				font-size: 1.11644rem;
+				font-style: normal;
+				font-weight: 300;
+				line-height: normal;
+				text-transform: capitalize;
+
+				svg {
+					width: 2rem;
+					height: 2rem;
+					transition: all 0.3s ease-in-out;
+				}
+
+				&:hover {
+					color: #ffffff;
+					border: 1px solid #045f53;
+					background: #045f53;
+
+					svg {
+						transform: scale(1.1);
+					}
+				}
+			}
+
+			.Right {
+				width: 9.8rem;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.3rem;
+				padding: 0.3rem 0;
+
+				button {
+					flex-basis: 50%;
+				}
+			}
+
+			.MainBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1.5rem;
+			}
+
+			.CropBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.Left {
+					flex: 1;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 1.5rem;
+
+					button {
+						width: 10rem;
+						flex-direction: row;
+					}
+				}
+			}
+
+			.RotateBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.Left {
+					flex: 1;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 1.5rem;
+
+					input {
+						width: 50%;
+						cursor: pointer;
+					}
+
+					p {
+						font-family: Poppins;
+						font-size: 1.5rem;
+						font-style: normal;
+						font-weight: 300;
+						line-height: normal;
+						text-transform: capitalize;
+						color: #3ff0d9;
+						width: 4rem;
+						text-align: center;
+					}
+				}
+			}
+
+			.AspectBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.Left {
+					flex: 1;
+					height: 100%;
+					overflow: hidden;
+					display: grid;
+					grid-template-columns: repeat(3, 1fr);
+					gap: 1rem;
+					padding: 1rem 2rem;
+
+					button {
+						width: 100%;
+						height: 100%;
+						flex-direction: row;
+						flex-wrap: wrap;
+					}
+				}
+			}
+
+			.EffectBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: #000;
+
+				.Left {
+					flex: 1;
+					height: 100%;
+					overflow: hidden;
+					display: flex;
+					padding: 1rem;
+
+					img {
+						width: 6rem;
+						height: 5rem;
+						cursor: pointer;
+						border-radius: 5px;
+					}
+				}
+			}
+
+			.MirrorBtnWrapper {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.Left {
+					flex: 1;
+					height: 100%;
+					overflow: hidden;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 1rem;
+
+					button {
+					}
+				}
+			}
+		}
+	}
+}
+
+.ControlsContainer {
+	position: fixed;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(255, 255, 255, 0.6);
+	width: 30rem;
+	width: 90%;
+	height: 20rem;
+	overflow: hidden;
+	display: flex;
+	gap: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+	backdrop-filter: blur(5px);
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+	z-index: 200 !important;
+
+	.Left {
+		flex: 1;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+
+		.InputWrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.3rem;
+			overflow: hidden;
+
+			&:nth-child(1) {
+				grid-row: 1;
+			}
+
+			&:nth-child(2) {
+				grid-row: 1/3;
+				display: flex;
+
+				input {
+					width: 7rem;
+					width: 85%;
+					height: 100%;
+					flex: 1;
+					rotate: (90deg);
+				}
+			}
+
+			label {
+				font-size: 1rem !important;
+				color: #000000;
+			}
+
+			input {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	.ButtonWrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+
+		button {
+			width: 7rem !important;
+			height: 3.5rem !important;
+			border-radius: 10px !important;
+			border: 1px solid #46f2db;
+			background: linear-gradient(134deg, rgba(30, 30, 30, 0.58) 7.59%, rgba(51, 51, 51, 0.58) 97.1%);
+			backdrop-filter: blur(2px);
+			color: #3ff0d9;
+			font-size: 1.7rem !important;
+			border-radius: 0.7rem;
+			cursor: pointer;
+			transition: all 0.3s ease-in;
+			transform: rotate(0deg) !important;
+			letter-spacing: 0rem !important;
+
+			&:hover {
+				color: #ffffff;
+				border: 1px solid #279485;
+				background: #279485;
+			}
+		}
+	}
+}
+
+.EffectNormal {
+	filter: contrast(100%) brightness(100%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.Effect1977 {
+	filter: contrast(110%) brightness(110%) saturate(130%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectAden {
+	filter: contrast(90%) brightness(120%) saturate(85%) sepia(0%) hue-rotate(20deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectAmaro {
+	filter: contrast(90%) brightness(110%) saturate(150%) sepia(0%) hue-rotate(-10deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectBrannan {
+	filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectBrooklyn {
+	filter: contrast(90%) brightness(110%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectClarendon {
+	filter: contrast(120%) brightness(125%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectEarlybird {
+	filter: contrast(90%) brightness(100%) saturate(100%) sepia(20%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectGingham {
+	filter: contrast(105%) brightness(100%) saturate(100%) sepia(0%) hue-rotate(350deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectHudson {
+	filter: contrast(90%) brightness(120%) saturate(110%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectInkwell {
+	filter: contrast(110%) brightness(110%) saturate(100%) sepia(30%) hue-rotate(0deg) grayscale(100%) invert(0%) blur(0px);
+}
+
+.EffectLofi {
+	filter: contrast(150%) brightness(100%) saturate(110%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectMaven {
+	filter: contrast(95%) brightness(95%) saturate(150%) sepia(25%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectPerpetua {
+	filter: contrast(100%) brightness(100%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectReyes {
+	filter: contrast(85%) brightness(110%) saturate(75%) sepia(22%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectStinson {
+	filter: contrast(75%) brightness(115%) saturate(85%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectToaster {
+	filter: contrast(110%) brightness(110%) saturate(130%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectWalden {
+	filter: contrast(110%) brightness(160%) saturate(100%) sepia(30%) hue-rotate(350deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectValencia {
+	filter: contrast(108%) brightness(108%) saturate(100%) sepia(8%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
+
+.EffectXpro2 {
+	filter: contrast(100%) brightness(100%) saturate(100%) sepia(30%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+}
